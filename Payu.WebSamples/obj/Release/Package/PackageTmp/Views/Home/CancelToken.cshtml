@@ -1,0 +1,54 @@
+﻿@model Payu.WebSamples.Models.TokenResponseModel
+@using Payu.Core
+@using System.Xml.Linq
+@{
+    ViewBag.Title = "Token İptal Servisi";
+}
+
+<h2>Token İptal Etme Servisi</h2>
+
+
+
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Token Bilgisi:</label>
+            <div class="col-md-4">
+                <input value="da4560b92190c0848cfedb0ece77446f" name="token" class="form-control input-md">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">iptal Sebebi</label>
+            <div class="col-md-4">
+                <input value="iptal sebebi" name="reason" class="form-control input-md">
+
+            </div>
+        </div>
+
+    </fieldset>
+
+
+    <!-- Button -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+            <button type="submit" id="" name="" class="btn btn-success">Token'ı iptal Et</button>
+        </div>
+    </div>
+
+
+    <pre>
+        @{
+         if (Model!=null)
+         {
+                @Model.TokenResponse
+         }
+     
+        }
+</pre>
+</form>
+

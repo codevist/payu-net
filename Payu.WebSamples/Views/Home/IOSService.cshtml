@@ -1,0 +1,47 @@
+﻿@model Payu.Core.Response.IOSResponse
+@using Payu.Core
+@using System.Xml.Linq
+@{
+    ViewBag.Title = "IOSService";
+}
+
+<h2>İşlem Sorgu Servisi(IOS)</h2>
+
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <!-- Text input-->
+      
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""> REFNOEXT: </label>
+            <div class="col-md-4">
+                <input value="7305" name="refnoExt" class="form-control input-md" width="50px">
+
+
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Button -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+            <button type="submit" id="" name="" class="btn btn-success">İşlem Sorgula</button>
+        </div>
+    </div>
+
+
+    <pre>
+        @{
+         if (Model!=null)
+         {
+              string formatted = XDocument.Parse(XmlBuilder.GetXMLFromObject(Model)).ToString();
+              @Html.Raw(Html.Encode(formatted));
+         }
+     
+        }
+</pre>
+</form>

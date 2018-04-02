@@ -1,0 +1,54 @@
+﻿@model Payu.WebSamples.Models.TokenResponseModel
+@using Payu.Core
+@using System.Xml.Linq
+@{
+    ViewBag.Title = "Çoklu token sorgulama";
+}
+
+<h2>Çoklu Token Listeleme Servisi</h2>
+
+
+
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">1. Token Bilgisi:</label>
+            <div class="col-md-4">
+                <input value="acf04a9d4e355aff3237f65e7b81793e" name="token1" class="form-control input-md">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">2. Token Bilgisi</label>
+            <div class="col-md-4">
+                <input value="9a3a75bc15ab7f2a90ee18159f15b2ea" name="token2" class="form-control input-md">
+
+            </div>
+        </div>
+
+    </fieldset>
+
+
+    <!-- Button -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+            <button type="submit" id="" name="" class="btn btn-success">Çoklu Token Listele</button>
+        </div>
+    </div>
+
+
+    <pre>
+        @{
+         if (Model!=null)
+         {
+                @Model.TokenResponse
+         }
+     
+        }
+</pre>
+</form>
+

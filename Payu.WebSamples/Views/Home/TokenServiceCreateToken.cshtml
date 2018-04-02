@@ -1,0 +1,44 @@
+﻿
+@model Payu.WebSamples.Models.TokenResponseModel
+@{
+    ViewBag.Title = "Token Create Service";
+}
+
+<h2>Token Oluşturma Servisi</h2>
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Refno:</label>
+            <div class="col-md-4">
+                <input name="refno" value="12039344" class="form-control input-md">
+
+            </div>
+        </div>
+
+
+    
+    </fieldset>
+
+
+    <!-- Button -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+            <button type="submit" id="" name="" class="btn btn-success">Token Oluştur</button>
+        </div>
+    </div>
+
+
+    <pre>
+        @{
+         if (Model!=null)
+         {
+                @Model.TokenResponse
+         }
+     
+        }
+</pre>
+</form>

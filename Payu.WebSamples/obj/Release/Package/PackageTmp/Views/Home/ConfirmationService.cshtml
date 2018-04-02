@@ -1,0 +1,69 @@
+﻿@model Payu.WebSamples.Models.ConfirmationResultModel
+@using Payu.Core
+@using System.Xml.Linq
+@{
+    ViewBag.Title = "ConfirmationService";
+}
+
+<h2>Konfirmasyon Servisi(IDN)</h2>
+
+
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Order Ref</label>
+            <div class="col-md-4">
+                <input value="39537992" name="orderRef" class="form-control input-md">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""> ORDER_REF:</label>
+            <div class="col-md-4">
+                <input value="40865275" name="orderRef" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">  ORDER_AMOUNT </label>
+            <div class="col-md-4">
+                <input value="118.00" name="amount" class="form-control input-md" width="50px">
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""> CHARGE_AMOUNT </label>
+            <div class="col-md-4">
+                <input value="118.00" name="chargeAmount" class="form-control input-md" width="50px">
+
+
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Button -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+            <button type="submit" id="" name="" class="btn btn-success">IDN Sorgula</button>
+        </div>
+    </div>
+
+
+    <pre>
+        @{
+            if (Model!=null)
+            {
+                @Model.Response
+
+         }
+     
+        }
+</pre>
+</form>

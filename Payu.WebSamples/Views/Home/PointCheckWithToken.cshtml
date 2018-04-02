@@ -1,0 +1,40 @@
+﻿
+
+
+@model Payu.Core.Response.PointCheckResponse
+@using Payu.Core
+@using System.Xml.Linq
+@{
+    ViewBag.Title = "Saklanmış Kart (Token) ile Sorgulama";
+}
+
+<h2>Saklanmış Kart (Token) ile Sorgulama</h2>
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+
+     
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""> Token:  </label>
+            <div class="col-md-4">
+                <input value="d06d4ec026462b2cbc5631b4dd540166" name="token" class="form-control input-md">
+            </div>
+        </div>
+    </fieldset>
+    <!-- Button -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+            <button type="submit" id="" name="" class="btn btn-success">Puan Sorgula</button>
+        </div>
+    </div>
+    <pre>
+        @{
+         if (Model!=null)
+         {
+              string formatted = XDocument.Parse(XmlBuilder.GetXMLFromObject(Model)).ToString();
+              @Html.Raw(Html.Encode(formatted));
+         }
+     
+        }
+</pre>
+</form>

@@ -1,0 +1,170 @@
+﻿@model Payu.Core.Response.ApiPaymentNon3DResponse
+@using Payu.Core
+@using System.Xml.Linq
+@{
+    ViewBag.Title = "Api İle Ödeme ";
+}
+
+<h2>3D secure olmadan Ödeme</h2>
+<fieldset>
+    <legend><label style="font-weight:bold;width:250px;">Ürün Bilgileri</label></legend>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Ürün
+                </th>
+                <th>
+                    Kod
+                </th>
+                <th>
+                    Adet
+                </th>
+                <th>
+                    KDV
+                </th>
+                <th>
+                    Birim Fiyat
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    Test Ürünü
+                </td>
+                <td>
+                    Test Kodu
+                </td>
+                <td>
+                    1
+                </td>
+                <td>
+                    18
+                </td>
+                <td>
+                   5 TL
+                </td>
+            </tr>
+           
+        </tbody>
+    </table>
+</fieldset>
+<div class="row">
+    <div class="col-md-6">
+        <fieldset>
+            <legend><label style="font-weight:bold;width:250px;">Fatura Adresi Bilgileri</label></legend>
+            <label style="font-weight:bold;">Ad :</label> Ad<br>
+            <label style="font-weight:bold;">Soyad :</label> soyad <br>
+            <label style="font-weight:bold;">E-Posta :</label> mail@mail.com <br>
+            <label style="font-weight:bold;">Telefon Numarası:</label> 02129003711 <br>
+            <label style="font-weight:bold;">Fax:</label> 02129003711 <br>
+            <label style="font-weight:bold;">Adres :</label>Birinci Adres satırı<br>
+            <label style="font-weight:bold;">Adres 2 :</label>İkinci Adres satırı<br>
+            <label style="font-weight:bold;">Posta Kodu :</label> 34000 <br>
+            <label style="font-weight:bold;">Şehir :</label> İstanbul <br>
+            <label style="font-weight:bold;">İlçe :</label> Ayazağa <br>
+            <label style="font-weight:bold;">Ülke Kodu :</label> TR <br>
+
+        </fieldset>
+    </div>
+    <div class="col-md-6">
+        <fieldset>
+            <legend><label style="font-weight:bold;">Teslimat Adresi Bilgileri</label></legend>
+            <label style="font-weight:bold;">Ad :</label> Ad<br>
+            <label style="font-weight:bold;">Soyad :</label> Soyad<br>
+            <label style="font-weight:bold;">E-Posta :</label> mail@mail.com <br>
+            <label style="font-weight:bold;">Firma</label> PayU Ödeme Kuruluşu A.Ş. <br>
+            <label style="font-weight:bold;">Adres :</label> Birinci Adres satırı<br>
+            <label style="font-weight:bold;">Adres2 :</label> Birinci Adres satırı<br>
+            <label style="font-weight:bold;">Posta Kodu :</label> 34000 <br>
+            <label style="font-weight:bold;">Şehir :</label> İstanbul <br>
+            <label style="font-weight:bold;">İlçe :</label> Ayazağa <br>
+            <label style="font-weight:bold;">Ülke Kodu :</label> TR <br>
+
+        </fieldset>
+    </div>
+</div>
+
+
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend><label style="font-weight:bold;width:250px;">Kart Bilgileriyle Ödeme</label></legend>
+
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Kart Sahibi Adı Soyadı:</label>
+            <div class="col-md-4">
+                <input value="000" name="nameSurname" class="form-control input-md">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">  Kart Numarası:</label>
+            <div class="col-md-4">
+                <input value="4355084355084358" name="cardNumber" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">  Son Kullanma Tarihi Ay/Yıl: </label>
+            <div class="col-md-4">
+                <input value="12" name="month" class="form-control input-md" width="50px">
+                <input value="2018" name="year" class="form-control input-md" width="50px">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">  CVC: </label>
+            <div class="col-md-4">
+                <input value="000" name="cvc" class="form-control input-md">
+
+            </div>
+        </div>
+
+
+    </fieldset>
+
+
+
+    Taksit Sayısı
+    <select name="installment">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select>
+
+    <!-- Button -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+            <button type="submit" id="" name="" class="btn btn-success">3D Secure Olmadan Ödeme</button>
+        </div>
+    </div>
+
+
+    <pre>
+        @{
+             if (Model!=null)
+        {
+             string formatted = XDocument.Parse(XmlBuilder.GetXMLFromObject(Model)).ToString();
+               @Html.Raw(Html.Encode(formatted));
+        }
+     
+            }
+</pre>
+</form>

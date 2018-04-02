@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - WireCard Developer Portal</title>
+    <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
+    <!-- Our Custom CSS -->
+    <link href="~/Assets/css/style.css" rel="stylesheet" />
+    <link rel="icon" href="~/favicon.ico">
+    <!-- Scrollbar Custom CSS -->
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="/"><img src="https://payuturkiye.github.io/PayU-Turkiye-Entegrasyon-Dokumani/images/logo.png" width="170" height="84" /></a>
+            </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Api İle Ödeme</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li><a href="@Url.Action("Index","Home")">3D  Secure Olmadan Ödeme </a></li>
+                        <li><a href="@Url.Action("ApiPayment3DSecure","Home")">3D İle Ödeme</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#createToken" data-toggle="collapse" aria-expanded="false">Kart Saklama ve Saklanmış Kart ile Ödeme Alma</a>
+                    <ul class="collapse list-unstyled" id="createToken">
+                        <li><a href="@Url.Action("CreateToken","Home")">Kart Saklama(Token Oluşturma) </a></li>
+                        <li><a href="@Url.Action("TokenWithPayment","Home")">Saklanmış Kart ile Ödeme Alma(Token ile Ödeme Alma)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="@Url.Action("CammonPaymentPage","Home")" aria-expanded="false">Ortak Ödeme Formu</a>
+                </li>
+                <li>
+                    <a href="#tokenSubMenu" data-toggle="collapse" aria-expanded="false">Token Servisleri</a>
+                    <ul class="collapse list-unstyled" id="tokenSubMenu">
+                        <li><a href="@Url.Action("TokenServiceCreateToken","Home")">Token Oluşturma </a></li>
+                        <li><a href="@Url.Action("GetTokenInformation","Home")">Token Bilgi Listeleme </a></li>
+                        <li><a href="@Url.Action("TokenHistory","Home")">Token'a göre sipariş geçmişi </a></li>
+                        <li><a href="@Url.Action("CancelToken","Home")">Token İptal Etme </a></li>
+                        <li><a href="@Url.Action("GetMultipleToken","Home")">Çoklu Token Sorgulama </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="@Url.Action("IOSService","Home")" aria-expanded="false">İşlem Sorgu Servisi</a>
+                </li>   
+                <li>
+                    <a href="@Url.Action("IrnService","Home")" aria-expanded="false">İptal/İade Servisi (IRN)</a>           
+                </li>
+                <li>
+                    <a href="#binService" data-toggle="collapse" aria-expanded="false">Bın Servisleri</a>
+                    <ul class="collapse list-unstyled" id="binService">
+                        <li><a href="@Url.Action("BinServiceV1","Home")">Bin Servisi V1 </a></li>
+                        <li><a href="@Url.Action("BinServiceV2","Home")">BIN Servisi v2(BIN ve Puan Sorgusu)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#checkPointService" data-toggle="collapse" aria-expanded="false">Puan Sorgu Servisi</a>
+                    <ul class="collapse list-unstyled" id="checkPointService">
+                        <li><a href="@Url.Action("PointCheck","Home")">Puan Sorgusu </a></li>
+                        <li><a href="@Url.Action("PointCheckWithToken","Home")">Saklanmış Kart (Token) ile Sorgulama</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="@Url.Action("ConfirmationService","Home")" aria-expanded="false">Konfirmasyon Servisi(IDN)</a>
+                </li>
+                <li>
+                    <a href="#reportService" data-toggle="collapse" aria-expanded="false">Rapor Servisi</a>
+                    <ul class="collapse list-unstyled" id="reportService">
+                        <li><a href="@Url.Action("OrderReport","Home")">Sipariş Raporu Oluşturma </a></li>
+                        <li><a href="@Url.Action("ProductReport","Home")">Ürün Raporu Oluşturma</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="content">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                            <i class="glyphicon glyphicon-align-left"></i>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            @RenderBody()
+        </div>
+    </div>
+    <script src="~/Assets/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <script src="~/Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    @RenderSection("Plugins", false/*required*/)
+    <!--End Begin Page Level Plugin-->
+    @RenderSection("Scripts", false/*required*/)
+    <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+    </script>
+</body>
+</html>

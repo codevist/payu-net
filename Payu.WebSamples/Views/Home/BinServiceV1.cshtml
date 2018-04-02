@@ -1,0 +1,42 @@
+﻿@model Payu.WebSamples.Models.BINServicesResultModel
+@{
+    ViewBag.Title = "BinService";
+}
+
+<h2>Bın Servisi</h2>
+
+<form action="" method="post" class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Bın number</label>
+            <div class="col-md-4">
+                <input value="39537992" name="binNumber" class="form-control input-md">
+
+            </div>
+        </div>
+      
+    </fieldset>
+
+
+    <!-- Button -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+            <button type="submit" id="" name="" class="btn btn-success">Bın Sorgula</button>
+        </div>
+    </div>
+
+
+    <pre>
+        @{
+         if (Model!=null)
+         {
+                @Model.Response
+         }
+     
+        }
+</pre>
+</form>

@@ -1,0 +1,40 @@
+﻿@model Payu.WebSamples.Models.ThreeDSecurePaymentResultModel
+@{
+
+}
+
+<h2>3D Secure İşlem Sonuç Sayfası</h2>
+
+@if (Model != null)
+{
+    if (Model.Status != null)
+    {
+        @("Status:")  @Model.Status
+        <br />
+
+    }
+    if (Model.ReturnMessage != null)
+    {
+        @("Return Message:")  @Model.ReturnMessage
+        <br />
+    }
+    if (@Model.RefNo != null)
+    {
+        @(" Payu Ref No:")   @Model.RefNo
+        <br />
+        <br />
+    }
+    if (@Model.ReturnCode != null)
+    {
+        @("Payu Return Code: ") @Model.ReturnCode
+        <br />
+    }
+
+}
+ 
+
+  
+   
+</p>
+
+
