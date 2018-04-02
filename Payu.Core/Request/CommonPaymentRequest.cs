@@ -314,6 +314,7 @@ namespace Payu.Core.Request
             builder.Append("<form //action=\"" + options.Url + "\" method=\"post\" id=\"common_form\" >");
             builder.Append("<input type=\"hidden\" name=\"MERCHANT\" value=\"" + request.Config.MERCHANT + "\"/>");
             builder.Append("<input type=\"hidden\" name=\"ORDER_REF\" value=\"" + request.Order.ORDER_REF + "\"/>");
+            builder.Append("<input type=\"hidden\" name=\"BACK_REF\" value=\"" + request.Config.BACK_REF + "\"/>");
             builder.Append("<input type=\"hidden\" name=\"ORDER_DATE\" value=\"" + request.Order.ORDER_DATE + "\"/>");
 
             foreach (var item in request.Order.OrderItems)

@@ -233,14 +233,16 @@ namespace Payu.WebSamples.Controllers
         [HttpPost]
         public ActionResult CammonPaymentPage(string installment)
         {
+            var siteUrl = Request.Url.GetLeftPart(UriPartial.Authority);
             CommonPaymentRequest cammonPageRequest = new CommonPaymentRequest();
 
             #region Genel Bilgiler
             cammonPageRequest.Config = new CommonPaymentRequest.PayUConfig();
             cammonPageRequest.Order = new CommonPaymentRequest.PayUOrder();
             cammonPageRequest.Config.MERCHANT = "OPU_TEST";
+            cammonPageRequest.Config.BACK_REF = siteUrl + "/home/CommonPaymentPageBackRef";
             cammonPageRequest.Order.ORDER_REF = Guid.NewGuid().ToString();
-            cammonPageRequest.Order.ORDER_DATE = DateTime.UtcNow.ToString("yyyy -MM-dd HH:mm:ss");
+            cammonPageRequest.Order.ORDER_DATE = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
             #region Urun Bilgileri 
             CommonPaymentRequest.PayUOrder.PayUOrderItem orderItem = new CommonPaymentRequest.PayUOrder.PayUOrderItem();
             orderItem.ORDER_PNAME = "MacBook Air 13 inch";
@@ -313,7 +315,14 @@ namespace Payu.WebSamples.Controllers
             return View();
         }
 
-      
+        public ActionResult CommonPaymentPageBackRef()
+        {
+            return View();
+        }
+
+
+
+
         public ActionResult CreateToken()
         {
             return View();

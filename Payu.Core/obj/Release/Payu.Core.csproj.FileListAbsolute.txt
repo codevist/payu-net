@@ -12,3 +12,10 @@ D:\PAYU\Codevist.Payu.NetClient\payu-net\Payu.Core\bin\Release\Newtonsoft.Json.x
 D:\PAYU\Codevist.Payu.NetClient\payu-net\Payu.Core\obj\Release\Payu.Core.csprojResolveAssemblyReference.cache
 D:\PAYU\Codevist.Payu.NetClient\payu-net\Payu.Core\obj\Release\Payu.Core.dll
 D:\PAYU\Codevist.Payu.NetClient\payu-net\Payu.Core\obj\Release\Payu.Core.pdb
+D:\PAYU\Codevist_Payu\payu-net\Payu.Core\bin\Release\Payu.Core.dll
+D:\PAYU\Codevist_Payu\payu-net\Payu.Core\bin\Release\Payu.Core.pdb
+D:\PAYU\Codevist_Payu\payu-net\Payu.Core\bin\Release\Newtonsoft.Json.dll
+D:\PAYU\Codevist_Payu\payu-net\Payu.Core\bin\Release\Newtonsoft.Json.xml
+D:\PAYU\Codevist_Payu\payu-net\Payu.Core\obj\Release\Payu.Core.csprojResolveAssemblyReference.cache
+D:\PAYU\Codevist_Payu\payu-net\Payu.Core\obj\Release\Payu.Core.dll
+D:\PAYU\Codevist_Payu\payu-net\Payu.Core\obj\Release\Payu.Core.pdb
