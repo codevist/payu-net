@@ -64,6 +64,7 @@
     <Compile Include="Request\ReportRequest.cs" />
     <Compile Include="Request\TokenHistoryRequest.cs" />
     <Compile Include="Request\TokenServiceCreateTokenRequest.cs" />
+    <Compile Include="Response\BkmPaymentResponse.cs" />
     <Compile Include="Response\ApiPayment3DResponse.cs" />
     <Compile Include="Response\ApiPaymentNon3DResponse.cs" />
     <Compile Include="Response\ConfirmationResponse.cs" />

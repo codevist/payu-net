@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -205,6 +206,7 @@
     <Content Include="Views\Home\AsyncNotificationService.cshtml" />
     <Content Include="Views\Home\CammonPaymentPage.cshtml" />
     <Content Include="Views\Home\CommonPaymentPageBackRef.cshtml" />
+    <Content Include="Views\Home\BkmPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

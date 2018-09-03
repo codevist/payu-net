@@ -19,6 +19,10 @@ namespace Payu.Core
         }
         public T PostData <T>(string postUrl,string hashstring)
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                                                   | SecurityProtocolType.Tls11
+                                                   | SecurityProtocolType.Tls12
+                                                   | SecurityProtocolType.Ssl3;
             WebClient wc = new WebClient();
             wc.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
 

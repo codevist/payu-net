@@ -108,6 +108,110 @@ namespace Payu.WebSamples.Controllers
             var response = ApiPaymentRequest.Non3DExecute(apiPaymentRequest, options); //api çağrısının başlatıldığı kısmı temsil eder.
             return View(response);
         }
+
+
+        public ActionResult BkmPayment()
+        {
+
+            return View();
+        }
+
+        /// <summary>
+        /// 3d secure olmadan ödeme çağrısının yapıldığı kısımdır.
+        /// </summary>
+        /// <param name="nameSurname"></param>
+        /// <param name="cardNumber"></param>
+        /// <param name="cvc"></param>
+        /// <param name="month"></param>
+        /// <param name="year"></param>
+        /// <param name="installment"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult BkmPayment(string nameSurname, string cardNumber, string cvc, string month, string year, string installment)
+        {
+            ApiPaymentRequest apiPaymentRequest = new ApiPaymentRequest();
+
+            #region Genel Bilgiler
+            apiPaymentRequest.Config = new ApiPaymentRequest.PayUConfig();
+            apiPaymentRequest.Config.MERCHANT = "OPU_TEST";
+            apiPaymentRequest.Config.LANGUAGE = "TR";
+            apiPaymentRequest.Config.PAY_METHOD = "BKM";
+            apiPaymentRequest.Config.BACK_REF = "";
+            apiPaymentRequest.Config.PRICES_CURRENCY = "TRY";
+            apiPaymentRequest.Order = new ApiPaymentRequest.PayUOrder();
+            apiPaymentRequest.Order.ORDER_REF = Guid.NewGuid().ToString();
+            apiPaymentRequest.Order.ORDER_SHIPPING = "5";
+            apiPaymentRequest.Order.ORDER_DATE = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
+            #endregion
+
+            #region Urun Bilgileri 
+            ApiPaymentRequest.PayUOrder.PayUOrderItem orderItem = new ApiPaymentRequest.PayUOrder.PayUOrderItem();
+            orderItem.ORDER_PRICE = "5";
+            orderItem.ORDER_PINFO = "Test Açıklaması";
+            orderItem.ORDER_QTY = "1";
+            orderItem.ORDER_PCODE = "Test Kodu";
+            orderItem.ORDER_PNAME = "Test Ürünü";
+            orderItem.ORDER_VAT = "18";
+            orderItem.ORDER_PRICE_TYPE = "NET";
+
+            apiPaymentRequest.Order.OrderItems.Add(orderItem);
+            #endregion
+
+            #region Kredi Kartı Bilgileri
+            apiPaymentRequest.CreditCard = new ApiPaymentRequest.PayUCreditCard();
+            apiPaymentRequest.CreditCard.SELECTED_INSTALLMENTS_NUMBER = installment;
+            #endregion
+
+            #region Fatura Bilgileri  
+            apiPaymentRequest.Customer = new ApiPaymentRequest.PayUCustomer();
+            apiPaymentRequest.Customer.BILL_FNAME = "Ad";
+            apiPaymentRequest.Customer.BILL_LNAME = "Soyad";
+            apiPaymentRequest.Customer.BILL_EMAIL = "mail@mail.com";
+            apiPaymentRequest.Customer.BILL_PHONE = "02129003711";
+            apiPaymentRequest.Customer.BILL_FAX = "02129003711";
+            apiPaymentRequest.Customer.BILL_ADDRESS = "Birinci Adres satırı";
+            apiPaymentRequest.Customer.BILL_ADDRESS2 = "İkinci Adres satırı";
+            apiPaymentRequest.Customer.BILL_ZIPCODE = "34000";
+            apiPaymentRequest.Customer.BILL_CITY = "ISTANBUL";
+            apiPaymentRequest.Customer.BILL_COUNTRYCODE = "TR";
+            apiPaymentRequest.Customer.BILL_STATE = "Ayazağa";
+            apiPaymentRequest.Customer.CLIENT_IP = Request.UserHostAddress;
+            #endregion
+
+            #region Teslimat Parametreleri
+            apiPaymentRequest.Delivery = new ApiPaymentRequest.PayUDelivery();
+            apiPaymentRequest.Delivery.DELIVERY_FNAME = "Ad";
+            apiPaymentRequest.Delivery.DELIVERY_LNAME = "Soyad";
+            apiPaymentRequest.Delivery.DELIVERY_EMAIL = "mail@mail.com";
+            apiPaymentRequest.Delivery.DELIVERY_PHONE = "02129003711";
+            apiPaymentRequest.Delivery.DELIVERY_COMPANY = "PayU Ödeme Kuruluşu A.Ş.";
+            apiPaymentRequest.Delivery.DELIVERY_ADDRESS = "Birinci Adres satırı";
+            apiPaymentRequest.Delivery.DELIVERY_ADDRESS2 = "İkinci Adres satırı";
+            apiPaymentRequest.Delivery.DELIVERY_ZIPCODE = "34000";
+            apiPaymentRequest.Delivery.DELIVERY_CITY = "ISTANBUL";
+            apiPaymentRequest.Delivery.DELIVERY_STATE = "TR";
+            apiPaymentRequest.Delivery.DELIVERY_COUNTRYCODE = "Ayazağa";
+            #endregion
+
+            var options = new Options();
+            options.Url = "https://secure.payu.com.tr/order/alu/v3";
+            options.SecretKey = "SECRET_KEY";
+            var response = ApiPaymentRequest.BkmPayment(apiPaymentRequest, options); //api çağrısının başlatıldığı kısmı temsil eder.
+            return View(response);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         public ActionResult ApiPayment3DSecure()
         {
            

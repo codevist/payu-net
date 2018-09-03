@@ -579,6 +579,12 @@ namespace Payu.Core.Request
             return HttpCaller.Create().PostData<ApiPayment3DResponse>(options.Url, hashString);
         }
 
+        public static BkmPaymentResponse BkmPayment(ApiPaymentRequest request, Options options)
+        {
+            var hashString = CreateHashString(request, options.SecretKey);
+            return HttpCaller.Create().PostData<BkmPaymentResponse>(options.Url, hashString);
+        }
+
 
         public static string CreateHashString(ApiPaymentRequest apiPaymentRequest, string secretKey)
         {
