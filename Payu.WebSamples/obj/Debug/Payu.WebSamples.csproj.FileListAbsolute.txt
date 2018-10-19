@@ -168,3 +168,5 @@ C:\Projects\payu-net-master\Payu.WebSamples\obj\Debug\Payu.WebSamples.csproj.Cor
 C:\Projects\payu-net-master\Payu.WebSamples\obj\Debug\Payu.WebSamples.csproj.CopyComplete
 C:\Projects\payu-net-master\Payu.WebSamples\obj\Debug\Payu.WebSamples.dll
 C:\Projects\payu-net-master\Payu.WebSamples\obj\Debug\Payu.WebSamples.pdb
+D:\PAYU\payu-net\Payu.WebSamples\obj\Debug\Payu.WebSamples.csproj.CoreCompileInputs.cache
+D:\PAYU\payu-net\Payu.WebSamples\obj\Debug\Payu.WebSamples.csproj.CopyComplete

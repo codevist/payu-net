@@ -43,6 +43,7 @@ namespace Payu.Core.Request
             public string MERCHANT { get; set; }
 
             public string PRICES_CURRENCY { get; set; }
+            public string INSTALLMENT_OPTIONS { get; set; }
 
         
 
@@ -345,7 +346,7 @@ namespace Payu.Core.Request
             {
                 builder.Append("<input type=\"hidden\" name=\"ORDER_VAT[]\" value=\"" + item.ORDER_VAT + "\"/>");
             }
-
+            builder.Append("<input type=\"hidden\" name=\"INSTALLMENT_OPTIONS\" value=\"" + request.Config.INSTALLMENT_OPTIONS + "\"/>");
             builder.Append("<input type=\"hidden\" name=\"ORDER_SHIPPING\" value=\"" + request.Order.ORDER_SHIPPING + "\"/>");
             builder.Append("<input type=\"hidden\" name=\"BILL_FNAME\" value=\"" + request.Customer.BILL_FNAME + "\"/>");
             builder.Append("<input type=\"hidden\" name=\"BILL_LNAME\" value=\"" + request.Customer.BILL_LNAME + "\"/>");
@@ -434,11 +435,15 @@ namespace Payu.Core.Request
             HASH_CONTENT += Helper.GetLengthAsByte(request.Customer.DESTINATION_STATE) + request.Customer.DESTINATION_STATE;
             HASH_CONTENT += Helper.GetLengthAsByte(request.Customer.DESTINATION_COUNTRY) + request.Customer.DESTINATION_COUNTRY;
             HASH_CONTENT += Helper.GetLengthAsByte(request.Config.PAY_METHOD) + request.Config.PAY_METHOD;
+
             foreach (var item in request.Order.OrderItems)
             {
                 HASH_CONTENT += Helper.GetLengthAsByte(item.ORDER_PRICE_TYPE) + item.ORDER_PRICE_TYPE;
             }
+            HASH_CONTENT += Helper.GetLengthAsByte(request.Config.INSTALLMENT_OPTIONS) + request.Config.INSTALLMENT_OPTIONS;
+
             HASH_CONTENT += Helper.GetLengthAsByte(request.Config.TESTORDER) + request.Config.TESTORDER;
+
             HASHED_CONTENT = Helper.CreateHash(HASH_CONTENT, secretKey);
             return HASHED_CONTENT;
         }

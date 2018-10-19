@@ -344,9 +344,11 @@ namespace Payu.WebSamples.Controllers
             cammonPageRequest.Config = new CommonPaymentRequest.PayUConfig();
             cammonPageRequest.Order = new CommonPaymentRequest.PayUOrder();
             cammonPageRequest.Config.MERCHANT = "OPU_TEST";
+            cammonPageRequest.Config.INSTALLMENT_OPTIONS = "6,7,8,9,10";
             cammonPageRequest.Config.BACK_REF = siteUrl + "/home/CommonPaymentPageBackRef";
             cammonPageRequest.Order.ORDER_REF = Guid.NewGuid().ToString();
             cammonPageRequest.Order.ORDER_DATE = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
+            
             #region Urun Bilgileri 
             CommonPaymentRequest.PayUOrder.PayUOrderItem orderItem = new CommonPaymentRequest.PayUOrder.PayUOrderItem();
             orderItem.ORDER_PNAME = "MacBook Air 13 inch";

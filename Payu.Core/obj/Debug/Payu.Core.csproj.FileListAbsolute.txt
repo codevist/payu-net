@@ -28,3 +28,5 @@ C:\Projects\payu-net-master\Payu.Core\obj\Debug\Payu.Core.csproj.CoreCompileInpu
 C:\Projects\payu-net-master\Payu.Core\obj\Debug\Payu.Core.csproj.CopyComplete
 C:\Projects\payu-net-master\Payu.Core\obj\Debug\Payu.Core.dll
 C:\Projects\payu-net-master\Payu.Core\obj\Debug\Payu.Core.pdb
+D:\PAYU\payu-net\Payu.Core\obj\Debug\Payu.Core.csproj.CoreCompileInputs.cache
+D:\PAYU\payu-net\Payu.Core\obj\Debug\Payu.Core.csproj.CopyComplete
